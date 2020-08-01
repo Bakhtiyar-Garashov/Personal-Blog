@@ -1,5 +1,6 @@
 import { Layout, Menu, Breadcrumb } from 'antd';
 import React from 'react';
+import Card from '../components/Card';
 import {
     DesktopOutlined,
     PieChartOutlined,
@@ -53,8 +54,8 @@ const CustomLayout = (props) => {
                         <Breadcrumb.Item>Bill</Breadcrumb.Item>
                     </Breadcrumb>
                     <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-                        Bill is a cat.
-            </div>
+                        <Card></Card>
+                    </div>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
             </Layout>
