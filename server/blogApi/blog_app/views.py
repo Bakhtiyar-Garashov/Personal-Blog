@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework import status
 from .models import Post
 from .serializers import PostSerializer
 # Create your views here.
@@ -16,7 +17,7 @@ def home(request):
 def get_all_posts(request):
     posts = Post.objects.all()
     serialized_posts = PostSerializer(posts, many=True)
-    return Response(serialized_posts.data)
+    return Response(serialized_posts.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
@@ -25,4 +26,4 @@ def create_post(request):
     if serialized_post.is_valid():
         serialized_post.save()
 
-    return Response(serialized_post.data)
+    return Response(serialized_post.data, status=status.HTTP_201_CREATED)
