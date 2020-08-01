@@ -24,4 +24,5 @@ def create_post(request):
     serialized_post = PostSerializer(data=request.data)
     if serialized_post.is_valid():
         serialized_post.save()
+
     return Response(serialized_post.data)
