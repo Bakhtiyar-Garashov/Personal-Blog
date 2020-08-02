@@ -9,6 +9,7 @@ from .serializers import PostSerializer
 
 
 @api_view(['GET'])
+@permission_classes((permissions.AllowAny,))
 def home(request):
     api_data = {'name': 'blog api', 'version': '1.0.0'}
     return Response(api_data)
