@@ -30,7 +30,7 @@ def create_post(request):
     if serialized_post.is_valid():
         serialized_post.save()
 
-    return Response(serialized_post.data, status=status.HTTP_201_CREATED)
+    return Response({"success": "New data added successfully"}, status=status.HTTP_201_CREATED)
 
 
 @api_view(['GET'])
