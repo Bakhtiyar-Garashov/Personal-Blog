@@ -1,11 +1,10 @@
-from .views import (
-    home,
-    get_all_posts,
-    create_post,
-    post_detail)
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from rest_framework_swagger.views import get_swagger_view
+
+from .views import create_post, get_all_posts, home, post_detail
 
 schema_view = get_swagger_view(title="Blog project")
 
