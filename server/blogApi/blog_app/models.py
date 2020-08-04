@@ -6,7 +6,8 @@ from django.template.defaultfilters import slugify
 class Post(models.Model):
     title = models.CharField(max_length=250)
     content = models.TextField()
-    slug = models.SlugField(max_length=50, unique=True, null=True, blank=True)
+    slug = models.SlugField(max_length=50, unique=True,
+                            null=True, blank=True, editable=False)
     image = models.ImageField(upload_to='uploads', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     last_updated_at = models.DateTimeField(auto_now=True)
