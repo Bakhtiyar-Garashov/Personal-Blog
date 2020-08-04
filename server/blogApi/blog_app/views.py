@@ -35,7 +35,7 @@ def create_post(request):
 
 @api_view(['GET'])
 @permission_classes((permissions.AllowAny,))
-def post_detail(request, id):
-    posts = get_object_or_404(Post, pk=id)
+def post_detail(request, slug):
+    posts = get_object_or_404(Post, slug=slug)
     serialized_posts = PostSerializer(posts)
     return Response(serialized_posts.data, status=status.HTTP_200_OK)
