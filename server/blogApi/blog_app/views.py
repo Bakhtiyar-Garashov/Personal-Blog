@@ -30,7 +30,7 @@ def create_post(request):
     if serialized_post.is_valid():
         serialized_post.save()
 
-    return Response({"success": "New data added successfully"}, status=status.HTTP_201_CREATED)
+    return Response({"success": "New entry added successfully"}, status=status.HTTP_201_CREATED)
 
 
 @api_view(['GET'])
@@ -39,3 +39,28 @@ def post_detail(request, slug):
     posts = get_object_or_404(Post, slug=slug)
     serialized_posts = PostSerializer(posts)
     return Response(serialized_posts.data, status=status.HTTP_200_OK)
+
+
+@api_view(['PUT', ])
+@permission_classes((permissions.AllowAny,))
+def post_update(request, slug):
+    posts = get_object_or_404(Post, slug=slug)
+    if request.method == 'PUT':
+        serialized_posts = PostSerializer(posts, data=request.data)
+        if serialized_posts.is_valid():
+            serialized_posts.save()
+            return Response({"success: Entry updated successfully"}, status=status.HTTP_200_OK)
+
+    return Response({"Error": "Entry update failed"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['DELETE', ])
+@permission_classes((permissions.AllowAny,))
+def post_delete(request, slug):
+    try:
+        posts = get_object_or_404(Post, slug=slug)
+        if request.method == 'DELETE':
+            posts.delete()
+            return Response({"success: Entry deleted successfully"}, status=status.HTTP_200_OK)
+    except Exception as e:
+        return Response({'Error': e.message}, status=status.HTTP_400_BAD_REQUEST)
