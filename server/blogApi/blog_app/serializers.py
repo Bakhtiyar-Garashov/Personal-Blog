@@ -3,7 +3,6 @@ from .models import Post
 
 
 class PostSerializer(serializers.ModelSerializer):
-    slug = serializers.SlugField(read_only=True)
 
     class Meta:
         model = Post
