@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blog_app.apps.BlogAppConfig',
     'rest_framework',
     'rest_framework_swagger',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'blogApi.urls'
@@ -145,3 +148,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
+
+# Allow requests cross origin
+
+CORS_ORIGIN_ALLOW_ALL = True
