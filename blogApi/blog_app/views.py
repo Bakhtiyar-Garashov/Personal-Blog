@@ -35,8 +35,7 @@ def create_post(request):
         else:
             return Response({"error": "Adding new entry failed"}, status=status.HTTP_400_BAD_REQUEST)
     except IntegrityError as e:
-        return Response({"failed":str(e)})
-        
+        return Response({"failed": str(e)})
 
 
 @api_view(['GET'])
