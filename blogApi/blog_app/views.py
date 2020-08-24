@@ -59,6 +59,7 @@ def post_update(request, slug):
     return Response({"Error": "Entry update failed"}, status=status.HTTP_400_BAD_REQUEST)
 
 
+#Delete entry based on slug
 @api_view(['DELETE', ])
 @permission_classes((permissions.AllowAny,))
 def post_delete(request, slug):
